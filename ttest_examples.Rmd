@@ -9,6 +9,55 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Confidence intervals associated with a sample
+
+Using t distribution because it accounts for greater uncertainty and our pop SD is unknown. Running a t-test on the single sample created.
+The 95% confidence interval we would expect to find the mean 95% percent of the time within this interval. 
+
+Report: Mean, n=x, SD and 95% confidence interval of the sample for general reporting of the central tendancy associated with the sample. 
+
+```{r}
+otter_length <- c(38, 41,50,27,32,41,48,60,43)
+
+t.test(otter_length)
+```
+## T-test (1-sample t-test)
+
+Run ?t.test in the console to see arguments and edit the settings of the T-test
+
+mu= is the null hypothesis to test in this case mean otter length =50in
+
+See a claim: mean otter length is 50 inches
+
+```{r}
+otter_test <- t.test(x= otter_length, mu=50)
+otter_test
+```
+If the pop mean is 50in then there is a 4.44% chance that we could have randomly taken a sample from the pop that has a mean that as least as different from 50 as our sample mean is in either direction. 
+
+When we do a two sample t-test. Are the differences between my two sample means are soo different that it more likely that they are drawn from different populations. 
+
+## Two-sample t-test
+
+```{r}
+desert_bighorns <- c(32, 44, 18, 26, 50, 33, 42, 20)
+sierra_bighorns <- c(28, 31, 40, 42, 26, 29, 31)
+
+t.test(x= desert_bighorns, y= sierra_bighorns)
+```
+The 95% confidence interval in a two-sample t-test is the difference between the two sample means. It can be negaitve because it can be y-x or x-y. We would expect the difference between the two sample means to be within this range 95% of the time. NOt as significant. 
+
+df= represents sample size
+t= 
+p-value= prob these samples are drawn from a pop with the same mean
+
+If the p-value prob is high there is a good chance that the samples are drawn from pops with the same mean. If the p-value is super low then there is a good chance the samples were drawn from dif pops. 
+
+
+
+
+
+
 
 
 

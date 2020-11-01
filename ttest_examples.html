@@ -369,7 +369,67 @@ summary {
 </div>
 
 
+<div id="confidence-intervals-associated-with-a-sample" class="section level2">
+<h2>Confidence intervals associated with a sample</h2>
+<p>Using t distribution because it accounts for greater uncertainty and our pop SD is unknown. Running a t-test on the single sample created. The 95% confidence interval we would expect to find the mean 95% percent of the time within this interval.</p>
+<p>Report: Mean, n=x, SD and 95% confidence interval of the sample for general reporting of the central tendancy associated with the sample.</p>
+<pre class="r"><code>otter_length &lt;- c(38, 41,50,27,32,41,48,60,43)
 
+t.test(otter_length)</code></pre>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  otter_length
+## t = 12.932, df = 8, p-value = 1.21e-06
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  34.69302 49.75142
+## sample estimates:
+## mean of x 
+##  42.22222</code></pre>
+</div>
+<div id="t-test-1-sample-t-test" class="section level2">
+<h2>T-test (1-sample t-test)</h2>
+<p>Run ?t.test in the console to see arguments and edit the settings of the T-test</p>
+<p>mu= is the null hypothesis to test in this case mean otter length =50in</p>
+<p>See a claim: mean otter length is 50 inches</p>
+<pre class="r"><code>otter_test &lt;- t.test(x= otter_length, mu=50)
+otter_test</code></pre>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  otter_length
+## t = -2.3821, df = 8, p-value = 0.0444
+## alternative hypothesis: true mean is not equal to 50
+## 95 percent confidence interval:
+##  34.69302 49.75142
+## sample estimates:
+## mean of x 
+##  42.22222</code></pre>
+<p>If the pop mean is 50in then there is a 4.44% chance that we could have randomly taken a sample from the pop that has a mean that as least as different from 50 as our sample mean is in either direction.</p>
+<p>When we do a two sample t-test. Are the differences between my two sample means are soo different that it more likely that they are drawn from different populations.</p>
+</div>
+<div id="two-sample-t-test" class="section level2">
+<h2>Two-sample t-test</h2>
+<pre class="r"><code>desert_bighorns &lt;- c(32, 44, 18, 26, 50, 33, 42, 20)
+sierra_bighorns &lt;- c(28, 31, 40, 42, 26, 29, 31)
+
+t.test(x= desert_bighorns, y= sierra_bighorns)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  desert_bighorns and sierra_bighorns
+## t = 0.14825, df = 10.913, p-value = 0.8849
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -9.653212 11.046069
+## sample estimates:
+## mean of x mean of y 
+##  33.12500  32.42857</code></pre>
+<p>The 95% confidence interval in a two-sample t-test is the difference between the two sample means. It can be negaitve because it can be y-x or x-y. We would expect the difference between the two sample means to be within this range 95% of the time. NOt as significant.</p>
+<p>df= represents sample size t= p-value= prob these samples are drawn from a pop with the same mean</p>
+<p>If the p-value prob is high there is a good chance that the samples are drawn from pops with the same mean. If the p-value is super low then there is a good chance the samples were drawn from dif pops.</p>
+</div>
 
 
 
